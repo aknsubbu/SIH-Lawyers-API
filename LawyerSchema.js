@@ -20,8 +20,8 @@ const LawyerSchema = new mongoose.Schema({
   location: { type: String, required: true },
   languagesKnown: [{ type: String, required: true }],
   rating: { type: String, required: true },
-  cases: [{ type: mongoose.schema.types.ObjectID, required: false }],
-  requestedCases: [{ type: mongoose.schema.types.ObjectID, required: false }],
+  cases: [{ type: mongoose.Schema.Types.ObjectId, required: false }],
+  requestedCases: [{ type: mongoose.Schema.Types.ObjectId, required: false }],
 });
 
 module.exports = mongoose.model("Lawyer", LawyerSchema);
