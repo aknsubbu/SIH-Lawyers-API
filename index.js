@@ -12,6 +12,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//connect to db
+mongoose.connect(process.env.DB_CONNECT);
+
 //test if online
 app.get("/isOnline", (req, res) => {
   res.send("Server is oline and running");
