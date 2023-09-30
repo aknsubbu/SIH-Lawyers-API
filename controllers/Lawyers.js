@@ -18,6 +18,15 @@ const lawyersById = async (req, res) => {
   }
 };
 
+const lawyersExpertise = async (req, res) => {
+  try {
+    const lawyer = await Lawyer.find({ expertise: req.params.expertise });
+    res.json(lawyer);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
 const lawyersReadable = async (req, res) => {
   try {
     res.send("Lawyers readable");
@@ -74,4 +83,5 @@ module.exports = {
   addLawyers,
   deleteLawyers,
   updateLawyers,
+  lawyersExpertise,
 };

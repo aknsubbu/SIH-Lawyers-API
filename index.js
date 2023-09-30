@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 //import routes
 const lawyersRoutes = require("./routes/LawyersRoutes.js");
+const rehabilitationCoursesRoutes = require("./routes/RehabilitationCoursesRoutes.js");
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.get("/isOnline", (req, res) => {
 
 //routes
 app.use("/lawyers", lawyersRoutes);
+app.use("/rehabilitationCourses", rehabilitationCoursesRoutes);
 
 //listen
 app.listen(process.env.PORT, () => {
