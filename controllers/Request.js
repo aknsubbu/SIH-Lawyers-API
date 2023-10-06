@@ -39,4 +39,31 @@ const RequestDelete = async (req, res) => {
   }
 };
 
-module.exports = { RequestId, RequestAll, RequestAdd, RequestDelete };
+const RequestAccept = async (req, res) => {
+  try {
+    const from = req.body.from;
+    const to = req.body.to;
+    const caseNumber = req.body.caseNumber;
+    const response = req.body.response;
+    const request = await Request.find({
+      from: from,
+      to: to,
+      caseNumber: caseNumber,
+    });
+    request.response = response;
+    const savedRequest = await Request.findByIdAndUpdate(request._id, request, {
+      new: false,
+    });
+    res.status(200).json(savedRequest);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
+module.exports = {
+  RequestId,
+  RequestAll,
+  RequestAdd,
+  RequestDelete,
+  RequestAccept,
+};
