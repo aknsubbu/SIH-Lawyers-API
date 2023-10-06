@@ -1,0 +1,42 @@
+const Request = require("../models/RequestSchema.js");
+
+const RequestId = async (req, res) => {
+  try {
+    const request = await Request.findById(req.params.requestId);
+    res.status(200).json(request);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
+const RequestAll = async (req, res) => {
+  try {
+    const request = await Request.find();
+    res.status(200).json(request);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
+const RequestAdd = async (req, res) => {
+  try {
+    const request = new Request(req.body);
+    const savedRequest = await request.save();
+    res.status(200).json(savedRequest);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
+const RequestDelete = async (req, res) => {
+  try {
+    const removedRequest = await Request.findByIdAndDelete({
+      _id: req.params.requestId,
+    });
+    res.status(200).json(removedRequest);
+  } catch (err) {
+    res.json({ message: err });
+  }
+};
+
+module.exports = { RequestId, RequestAll, RequestAdd, RequestDelete };

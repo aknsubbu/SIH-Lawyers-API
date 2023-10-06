@@ -48,7 +48,9 @@ const addLawyers = async (req, res) => {
 
 const deleteLawyers = async (req, res) => {
   try {
-    const removedLawyer = await Lawyer.remove({ _id: req.params.lawyerId });
+    const removedLawyer = await Lawyer.findByIdAndDelete({
+      _id: req.params.lawyerId,
+    });
     res.json(removedLawyer);
   } catch (err) {
     res.json({ message: err });
