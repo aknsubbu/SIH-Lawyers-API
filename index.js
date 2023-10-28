@@ -10,6 +10,7 @@ const rehabilitationCoursesRoutes = require("./routes/RehabilitationCoursesRoute
 const UserRoutes = require("./routes/UserRoutes.js");
 const RequestRoutes = require("./routes/RequestRoutes.js");
 const CaseRoutes = require("./routes/CaseRoutes.js");
+const Authroutes = require("./routes/Authroutes.js");
 
 dotenv.config();
 
@@ -39,7 +40,8 @@ app.use("/lawyers", lawyersRoutes);
 app.use("/rehabilitationCourses", rehabilitationCoursesRoutes);
 app.use("/users", UserRoutes);
 app.use("/requests", RequestRoutes);
-app.use("/cases", CaseRoutes )
+app.use("/cases", CaseRoutes);
+app.use("/auth", Authroutes);
 
 //listen
 app.listen(process.env.PORT, () => {
